@@ -10,7 +10,7 @@ document.getElementById("prompt-form").addEventListener("submit", async function
     container.innerText = "Generating video...";
   
     try {
-      const response = await fetch("https://videoartdirector-ai-bvqf.vercel.app/api/generate", {
+      const response = await fetch("https://videoartdirector.ai/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
