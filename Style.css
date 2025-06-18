@@ -1,0 +1,15 @@
+body {
+    font-family: sans-serif;
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+  }
+  input, button {
+    display: block;
+    margin: 1rem 0;
+    padding: 0.6rem;
+    width: 100%;
+  }
+  #video-container {
+    margin-top: 2rem;
+  }

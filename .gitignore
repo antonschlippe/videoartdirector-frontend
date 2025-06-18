@@ -1,0 +1,20 @@
+# macOS system files
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# Node.js modules (if you add npm later)
+node_modules/
+
+# Log files
+*.log
+
+# Local environment configs (if you ever use .env)
+.env
+.env.local
+.env.*.local
+
+# Build output (if you compile later)
+dist/
+build/
