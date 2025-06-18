@@ -3,6 +3,8 @@ body {
     padding: 2rem;
     max-width: 600px;
     margin: auto;
+    background-color: black;
+    color: white;
   }
   input, button {
     display: block;
