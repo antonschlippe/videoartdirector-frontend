@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "videoartdirector-frontend",
+			"path": "."
+		},
+		{
+			"name": "cd videoartdirector-server",
+			"path": "../cd videoartdirector-server"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "videoartdirector-frontend"
+	}
+}
