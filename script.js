@@ -18,7 +18,7 @@ document.getElementById("prompt-form").addEventListener("submit", async (e) => {
     method: "POST",
     body: formData,
   });
-
+  
   const data = await response.json();
   const container = document.getElementById("video-container");
 
