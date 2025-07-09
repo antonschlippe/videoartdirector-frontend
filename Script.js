@@ -10,27 +10,36 @@ document.getElementById("prompt-form").addEventListener("submit", async (e) => {
 
   const promptText = `${scene}, shot with ${lens}, styled as ${style}`;
 
-  const formData = new FormData();
-  formData.append("image", imageFile);
-  formData.append("promptText", promptText);
+  const reader = new FileReader();
+  reader.onloadend = async () => {
+    const imageBase64 = reader.result;
 
-  const response = await fetch("https://videoartdirector-backend.vercel.app/api/generate", {
-    method: "POST",
-    body: formData,
-  });
-  
-  const data = await response.json();
-  const container = document.getElementById("video-container");
+    const response = await fetch("https://videoartdirector-backend.vercel.app/api/generate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        imageBase64,
+        promptText
+      })
+    });
 
-  if (response.ok && data.output && data.output[0]) {
-    container.innerHTML = `
-      <p>Video generated:</p>
-      <video controls width="480">
-        <source src="${data.output[0]}" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    `;
-  } else {
-    container.innerHTML = `<p style="color:red;">Error: ${data.error || "Something went wrong"}</p>`;
-  }
+    const data = await response.json();
+    const container = document.getElementById("video-container");
+
+    if (response.ok && data.output && data.output[0]) {
+      container.innerHTML = `
+        <p>Video generated:</p>
+        <video controls width="480">
+          <source src="${data.output[0]}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      `;
+    } else {
+      container.innerHTML = `<p style="color:red;">Error: ${data.error || "Something went wrong"}</p>`;
+    }
+  };
+
+  reader.readAsDataURL(imageFile);
 });
