@@ -1,33 +1,36 @@
-document.getElementById("prompt-form").addEventListener("submit", async function (e) {
-    e.preventDefault();
-  
-    const form = e.target;
-    const formData = new FormData(form);
-    const payload = {};
-    formData.forEach((val, key) => (payload[key] = val));
-  
-    const container = document.getElementById("video-container");
-    container.innerText = "Generating video...";
-  
-    try {
-      const response = await fetch("https://videoartdirectorai-backend.vercel.app/api/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-  
-      const data = await response.json();
-      if (data.video) {
-        container.innerHTML = `
-          <video controls autoplay muted loop width="100%">
-            <source src="${data.video}" type="video/mp4" />
-          </video>
-        `;
-      } else {
-        container.innerText = "No video returned.";
-      }
-    } catch (err) {
-      console.error(err);
-      container.innerText = "Error generating video.";
-    }
+
+document.getElementById("prompt-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const fileInput = document.getElementById("image");
+  const imageFile = fileInput.files[0];
+  const scene = document.querySelector("input[name='scene']").value;
+  const lens = document.querySelector("input[name='lens']").value;
+  const style = document.querySelector("input[name='style']").value;
+
+  const promptText = `${scene}, shot with ${lens}, styled as ${style}`;
+
+  const formData = new FormData();
+  formData.append("image", imageFile);
+  formData.append("promptText", promptText);
+
+  const response = await fetch("http://localhost:3001/api/generate", {
+    method: "POST",
+    body: formData,
   });
+
+  const data = await response.json();
+  const container = document.getElementById("video-container");
+
+  if (response.ok && data.output && data.output[0]) {
+    container.innerHTML = `
+      <p>Video generated:</p>
+      <video controls width="480">
+        <source src="${data.output[0]}" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    `;
+  } else {
+    container.innerHTML = `<p style="color:red;">Error: ${data.error || "Something went wrong"}</p>`;
+  }
+});
