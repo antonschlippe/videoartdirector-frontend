@@ -1,4 +1,3 @@
-
 document.getElementById("prompt-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -27,13 +26,15 @@ document.getElementById("prompt-form").addEventListener("submit", async (e) => {
 
     const data = await response.json();
     console.log('Response JSON:', data);
+    console.log('Video URL:', data.videoUrl);
     const container = document.getElementById("video-container");
+    container.innerHTML = "<p>Generating video, please wait...</p>";
 
     if (response.ok && data.videoUrl) {
       container.innerHTML = `
         <p>Video generated:</p>
         <video controls width="480" autoplay>
-          <source src="${data.videoUrl}" type="video/mp4" />
+          <source src="${typeof data.videoUrl === 'string' ? data.videoUrl : data.videoUrl[0]}" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       `;
