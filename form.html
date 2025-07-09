@@ -13,16 +13,14 @@
     <p>Generate high-precision prompts & cinematic videos with a single form.</p>
   </section>
 
-  <form id="prompt-form">
-    <input name="duration" placeholder="Duration (seconds)" required />
-
-<!--    <input name="format" placeholder="Video Format" /> -->
+  <form id="prompt-form" enctype="multipart/form-data">
+    <input type="file" id="image" accept="image/*" required />
     <input name="scene" placeholder="Scene Description" required />
     <input name="lens" placeholder="Lens Type" required />
     <input name="style" placeholder="Visual Style" required />
     <button type="submit">Generate Video</button>
   </form>
-
+  
   <div id="video-container"></div>
 
   <script src="script.js"></script>
