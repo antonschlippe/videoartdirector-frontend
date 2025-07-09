@@ -14,7 +14,7 @@ document.getElementById("prompt-form").addEventListener("submit", async (e) => {
   formData.append("image", imageFile);
   formData.append("promptText", promptText);
 
-  const response = await fetch("http://localhost:3001/api/generate", {
+  const response = await fetch("https://videoartdirector-backend.vercel.app/api/generate", {
     method: "POST",
     body: formData,
   });
