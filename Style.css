@@ -5,13 +5,40 @@ body {
     margin: auto;
     background-color: black;
     color: white;
-  }
-  input, button {
-    display: block;
-    margin: 1rem 0;
-    padding: 0.6rem;
-    width: 100%;
-  }
-  #video-container {
-    margin-top: 2rem;
-  }
+}
+input, button {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  width: 100%;
+}
+#video-container {
+  margin-top: 2rem;
+}
+
+.back-to-home {
+  color: white;
+}
+
+.cta-button {
+  background-color: #b50f04;
+  color: white;
+  padding: 14px 25px;
+  width: 70px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto auto 0px 0px;
+}
+
+.generate {
+  background-color: #b50f04;
+  color: white;
+  font-size: 15px;
+  padding: 10px 20px;
+  width: 140px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: auto auto 0px 0px;
+}
