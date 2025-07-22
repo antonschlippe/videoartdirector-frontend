@@ -6,12 +6,26 @@ body {
     background-color: black;
     color: white;
 }
-input, button {
-  display: block;
+input {
+  display: flex;
   margin: 1rem 0;
   padding: 0.6rem;
   width: 100%;
 }
+
+.generate {
+  background-color: #b50f04;
+  color: white;
+  font-size: 15px;
+  width: 140px;
+  border: none;
+
+
+  justify-content: center;
+  align-items: center;
+  margin: auto auto 0px 0px;
+}
+
 #video-container {
   margin-top: 2rem;
 }
@@ -31,14 +45,3 @@ input, button {
   margin: auto auto 0px 0px;
 }
 
-.generate {
-  background-color: #b50f04;
-  color: white;
-  font-size: 15px;
-  padding: 10px 20px;
-  width: 140px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin: auto auto 0px 0px;
-}
